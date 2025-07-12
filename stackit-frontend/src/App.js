@@ -3,11 +3,15 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Header from './components/Header';
 import LandingPage from './components/LandingPage';
 import HomePage from './components/HomePage';
+import TrendingQuestions from './components/TrendingQuestions';
+import UserProfile from './components/UserProfile';
 import QuestionDetail from './components/QuestionDetail';
 import AskQuestion from './components/AskQuestion';
+import SmartSearch from './components/SmartSearch';
 import Login from './components/Login';
 import Register from './components/Register';
 import './App.css';
+import './animations.css';
 
 // Context for global state
 const AppContext = createContext();
@@ -139,12 +143,54 @@ function App() {
               </>
             } />
             
+            {/* Trending questions page route */}
+            <Route path="/trending" element={
+              <>
+                <Header />
+                <main className="container mx-auto px-4 py-8">
+                  <TrendingQuestions />
+                </main>
+              </>
+            } />
+            
+            {/* User profile routes */}
+            <Route path="/profile" element={
+              user ? (
+                <>
+                  <Header />
+                  <main className="container mx-auto px-4 py-8">
+                    <UserProfile />
+                  </main>
+                </>
+              ) : (
+                <Navigate to="/login" replace />
+              )
+            } />
+            <Route path="/profile/:userId" element={
+              <>
+                <Header />
+                <main className="container mx-auto px-4 py-8">
+                  <UserProfile />
+                </main>
+              </>
+            } />
+            
             {/* Question detail route */}
             <Route path="/questions/:id" element={
               <>
                 <Header />
                 <main className="container mx-auto px-4 py-8">
                   <QuestionDetail />
+                </main>
+              </>
+            } />
+            
+            {/* AI Smart Search route */}
+            <Route path="/search" element={
+              <>
+                <Header />
+                <main className="container mx-auto px-4 py-8">
+                  <SmartSearch />
                 </main>
               </>
             } />

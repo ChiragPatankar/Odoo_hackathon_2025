@@ -5,7 +5,7 @@
     "content": "You can use the `mssql` package for Node.js. Here's a simple example:\n\n```javascript\nconst sql = require('mssql');\n\nconst config = {\n  user: 'your_username',\n  password: 'your_password',\n  server: 'your_server',\n  database: 'your_database'\n};\n\nsql.connect(config)\n  .then(pool => {\n    return pool.request().query('SELECT * FROM users');\n  })\n  .then(result => {\n    console.log(result);\n  });\n```\n\nMake sure to handle errors and use connection pooling for better performance.",
     "userId": "user1",
     "username": "admin",
-    "votes": 8,
+    "votes": 13,
     "isAccepted": false,
     "createdAt": "2025-07-11T05:51:06.545Z"
   },
@@ -18,5 +18,25 @@
     "votes": 3,
     "isAccepted": false,
     "createdAt": "2025-07-11T06:51:06.545Z"
+  },
+  {
+    "id": "de256e42-683d-44a0-8665-bacd77e958f7",
+    "questionId": "q2",
+    "content": "YOU R VERY RIGHT!!!!",
+    "userId": "526a470a-d2db-4ca4-8d33-e1c829aad92d",
+    "username": "chirag12",
+    "votes": 0,
+    "isAccepted": false,
+    "createdAt": "2025-07-12T06:12:07.484Z"
+  },
+  {
+    "id": "6b72b15a-207c-4cc1-905f-368ec89141cd",
+    "questionId": "q2",
+    "content": "Uncaught runtime errors:\n×\nERROR\nObjects are not valid as a React child (found: object with keys {id, questionId, content, userId, username, votes, isAccepted, createdAt}). If you meant to render a collection of children, use an array instead.\n    at throwOnInvalidObjectType (http://localhost:3000/static/js/bundle.js:7183:11)\n    at createChild (http://localhost:3000/static/js/bundle.js:7276:9)\n    at reconcileChildrenArray (http://localhost:3000/static/js/bundle.js:7376:66)\n    at reconcileChildFibersImpl (http://localhost:3000/static/js/bundle.js:7483:109)\n    at http://localhost:3000/static/js/bundle.js:7510:31\n    at reconcileChildren (http://localhost:3000/static/js/bundle.js:7772:115)\n    at beginWork (http://localhost:3000/static/js/bundle.js:8537:16)\n    at runWithFiberInDEV (http://localhost:3000/static/js/bundle.js:3953:68)\n    at performUnitOfWork (http://localhost:3000/static/js/bundle.js:10534:93)\n    at workLoopSync (http://localhost:3000/static/js/bundle.js:10427:38)",
+    "userId": "526a470a-d2db-4ca4-8d33-e1c829aad92d",
+    "username": "chirag12",
+    "votes": 1,
+    "isAccepted": false,
+    "createdAt": "2025-07-12T06:18:15.901Z"
   }
 ]

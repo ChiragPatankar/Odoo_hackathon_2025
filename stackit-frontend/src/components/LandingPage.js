@@ -46,7 +46,7 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 page-transition">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-purple-600/10"></div>
@@ -54,14 +54,14 @@ const LandingPage = () => {
           <div className="text-center max-w-4xl mx-auto">
             {/* Logo */}
             <div className="flex justify-center mb-8">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-2xl shadow-lg">
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-2xl shadow-lg animate-scale-in">
                 <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center">
                   <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">S</span>
                 </div>
               </div>
             </div>
 
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent leading-tight animate-fade-in animate-delay-200">
               Stack<span className="text-blue-600">It</span>
             </h1>
             
@@ -74,7 +74,7 @@ const LandingPage = () => {
               {user ? (
                 <Link 
                   to="/questions"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg btn-hover-lift btn-hover-glow btn-click-scale transition-all duration-300 animate-bounce animate-delay-400"
                 >
                   Explore Questions
                 </Link>
@@ -123,7 +123,7 @@ const LandingPage = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {features.map((feature, index) => (
-              <div key={index} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 group">
+              <div key={index} className="bg-white p-8 rounded-2xl shadow-lg card-hover group stagger-item animate-fade-in">
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}
                 </div>

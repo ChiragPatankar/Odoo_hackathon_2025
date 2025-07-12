@@ -25,5 +25,14 @@
     "isAdmin": false,
     "avatar": "https://via.placeholder.com/40/007bff/ffffff?text=C",
     "createdAt": "2025-07-12T04:58:10.505Z"
+  },
+  {
+    "id": "526a470a-d2db-4ca4-8d33-e1c829aad92d",
+    "username": "chirag12",
+    "email": "chirag@gmail.com",
+    "password": "R3yGCL$5MgRKSiD",
+    "isAdmin": false,
+    "avatar": "https://via.placeholder.com/40/007bff/ffffff?text=C",
+    "createdAt": "2025-07-12T05:15:59.319Z"
   }
 ]

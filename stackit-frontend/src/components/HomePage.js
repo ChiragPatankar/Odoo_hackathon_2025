@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../App';
+import VotingButtons from './VotingButtons';
 
 const HomePage = () => {
   const { API_BASE_URL, user } = useApp();
@@ -29,7 +30,14 @@ const HomePage = () => {
       
       const response = await fetch(`${API_BASE_URL}/questions?${params}`);
       const data = await response.json();
-      setQuestions(data);
+      
+      // Ensure consistent data structure for answers
+      const normalizedData = data.map(question => ({
+        ...question,
+        answers: typeof question.answers === 'number' ? question.answers : (Array.isArray(question.answers) ? question.answers.length : 0)
+      }));
+      
+      setQuestions(normalizedData);
       setLoading(false);
     } catch (error) {
       console.error('Error fetching questions:', error);
@@ -102,7 +110,7 @@ const HomePage = () => {
   return (
     <div className="max-w-7xl mx-auto">
       {/* Header Section */}
-      <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 mb-8">
+      <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 mb-8 animate-fade-in">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
           <div>
             <h1 className="text-4xl font-bold text-gray-800 mb-3">
@@ -114,7 +122,7 @@ const HomePage = () => {
           </div>
           <Link 
             to="/ask"
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center space-x-2"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg btn-hover-lift btn-hover-glow btn-click-scale transition-all duration-300 flex items-center space-x-2 animate-slide-in-right animate-delay-200"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -125,7 +133,7 @@ const HomePage = () => {
       </div>
 
       {/* Search and Filters */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-8 animate-slide-up animate-delay-100">
         <form onSubmit={handleSearch} className="mb-6">
           <div className="flex gap-4">
             <div className="flex-1 relative">
@@ -139,12 +147,12 @@ const HomePage = () => {
                 placeholder="Search questions..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl form-input-focus focus-ring transition-all duration-200"
               />
             </div>
             <button
               type="submit"
-              className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition-colors font-medium"
+              className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 btn-hover-lift btn-click-scale transition-colors font-medium"
             >
               Search
             </button>
@@ -159,9 +167,9 @@ const HomePage = () => {
                 <button
                   key={filter}
                   onClick={() => setFilterBy(filter)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm btn-hover-lift btn-click-scale transition-all duration-200 ${
                     filterBy === filter
-                      ? 'bg-blue-600 text-white shadow-md'
+                      ? 'bg-blue-600 text-white shadow-md animate-scale-in'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -178,9 +186,9 @@ const HomePage = () => {
             <div className="flex gap-2 flex-wrap">
               <button
                 onClick={() => setSelectedTag('')}
-                className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
+                className={`px-3 py-1 rounded-full text-sm font-medium btn-hover-lift btn-click-scale transition-all duration-200 ${
                   selectedTag === ''
-                    ? 'bg-purple-600 text-white'
+                    ? 'bg-purple-600 text-white animate-scale-in'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -190,9 +198,9 @@ const HomePage = () => {
                 <button
                   key={tag}
                   onClick={() => setSelectedTag(tag)}
-                  className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
+                  className={`px-3 py-1 rounded-full text-sm font-medium btn-hover-lift btn-click-scale transition-all duration-200 ${
                     selectedTag === tag
-                      ? 'bg-purple-600 text-white'
+                      ? 'bg-purple-600 text-white animate-scale-in'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -218,24 +226,24 @@ const HomePage = () => {
       </div>
 
       {/* Stats Bar */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div className="bg-white rounded-xl p-4 border border-gray-100">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 animate-slide-up animate-delay-200">
+        <div className="bg-white rounded-xl p-4 border border-gray-100 card-hover-glow stagger-item animate-fade-in">
           <div className="text-2xl font-bold text-blue-600">{questions.length}</div>
           <div className="text-sm text-gray-600">Questions</div>
         </div>
-        <div className="bg-white rounded-xl p-4 border border-gray-100">
+        <div className="bg-white rounded-xl p-4 border border-gray-100 card-hover-glow stagger-item animate-fade-in">
           <div className="text-2xl font-bold text-green-600">
             {questions.filter(q => q.acceptedAnswerId).length}
           </div>
           <div className="text-sm text-gray-600">Solved</div>
         </div>
-        <div className="bg-white rounded-xl p-4 border border-gray-100">
+        <div className="bg-white rounded-xl p-4 border border-gray-100 card-hover-glow stagger-item animate-fade-in">
           <div className="text-2xl font-bold text-purple-600">
-            {questions.filter(q => q.answers === 0).length}
+            {questions.filter(q => (Array.isArray(q.answers) ? q.answers.length : q.answers || 0) === 0).length}
           </div>
           <div className="text-sm text-gray-600">Unanswered</div>
         </div>
-        <div className="bg-white rounded-xl p-4 border border-gray-100">
+        <div className="bg-white rounded-xl p-4 border border-gray-100 card-hover-glow stagger-item animate-fade-in">
           <div className="text-2xl font-bold text-orange-600">{tags.length}</div>
           <div className="text-sm text-gray-600">Tags</div>
         </div>
@@ -256,29 +264,40 @@ const HomePage = () => {
             </p>
             <Link 
               to="/ask"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-block"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold btn-hover-lift btn-hover-glow btn-click-scale transition-all duration-300 inline-block animate-bounce"
             >
               Ask the First Question
             </Link>
           </div>
         ) : (
-          questions.map((question) => (
-            <div key={question.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-lg hover:border-blue-200 transition-all duration-300 group">
+          questions.map((question, index) => (
+            <div key={question.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 card-hover group stagger-item animate-fade-in">
               <div className="flex flex-col lg:flex-row gap-6">
                 {/* Vote and Answer Stats */}
                 <div className="flex lg:flex-col gap-6 lg:gap-4 text-center lg:min-w-24">
                   <div className="flex flex-col items-center">
-                    <div className={`text-3xl font-bold mb-1 ${question.votes > 0 ? 'text-blue-600' : 'text-gray-700'}`}>
-                      {question.votes}
-                    </div>
-                    <span className="text-sm text-gray-500">votes</span>
+                    <VotingButtons
+                      itemType="question"
+                      itemId={question.id}
+                      initialVotes={question.votes}
+                      initialUserVote={question.userVote}
+                      onVoteChange={(newVotes, newUserVote) => {
+                        setQuestions(questions.map(q => 
+                          q.id === question.id 
+                            ? { ...q, votes: newVotes, userVote: newUserVote }
+                            : q
+                        ));
+                      }}
+                      size="small"
+                      showTooltip={false}
+                    />
                   </div>
                   <div className="flex flex-col items-center">
                     <div className={`text-3xl font-bold mb-1 ${
                       question.acceptedAnswerId ? 'text-green-600' : 
-                      question.answers > 0 ? 'text-blue-600' : 'text-gray-700'
+                      (Array.isArray(question.answers) ? question.answers.length : question.answers || 0) > 0 ? 'text-blue-600' : 'text-gray-700'
                     }`}>
-                      {question.answers}
+                      {Array.isArray(question.answers) ? question.answers.length : question.answers || 0}
                     </div>
                     <span className="text-sm text-gray-500">answers</span>
                   </div>
@@ -306,7 +325,7 @@ const HomePage = () => {
                       <button
                         key={tag}
                         onClick={() => setSelectedTag(tag)}
-                        className="px-3 py-1 bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 text-sm rounded-full hover:from-blue-100 hover:to-purple-100 transition-all duration-200 border border-blue-200 hover:border-blue-300"
+                        className="px-3 py-1 bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 text-sm rounded-full hover:from-blue-100 hover:to-purple-100 btn-hover-lift btn-click-scale transition-all duration-200 border border-blue-200 hover:border-blue-300"
                       >
                         {tag}
                       </button>

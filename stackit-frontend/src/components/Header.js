@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useApp } from '../App';
+import MedalSystem from './MedalSystem';
 
 const Header = () => {
   const { user, logout } = useApp();
@@ -17,11 +18,11 @@ const Header = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <header className="bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-100 sticky top-0 z-50">
+    <header className="bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-100 sticky top-0 z-50 animate-slide-down">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
+          <Link to="/" className="flex items-center space-x-3 group btn-hover-lift">
             <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-xl shadow-md group-hover:shadow-lg transition-all duration-300">
               <span className="text-white font-bold text-xl">S</span>
             </div>
@@ -37,26 +38,44 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <Link 
               to="/" 
-              className={`font-medium transition-colors hover:text-blue-600 ${
-                isActive('/') ? 'text-blue-600' : 'text-gray-700'
+              className={`font-medium nav-item ${
+                isActive('/') ? 'text-blue-600 active' : 'text-gray-700'
               }`}
             >
               Home
             </Link>
             <Link 
               to="/questions" 
-              className={`font-medium transition-colors hover:text-blue-600 ${
-                isActive('/questions') ? 'text-blue-600' : 'text-gray-700'
+              className={`font-medium nav-item ${
+                isActive('/questions') ? 'text-blue-600 active' : 'text-gray-700'
               }`}
             >
               Questions
+            </Link>
+            <Link 
+              to="/search" 
+              className={`font-medium nav-item flex items-center gap-2 ${
+                isActive('/search') ? 'text-purple-600 active' : 'text-gray-700'
+              }`}
+            >
+              <span>🤖</span>
+              AI Search
+            </Link>
+            <Link 
+              to="/trending" 
+              className={`font-medium nav-item flex items-center gap-2 ${
+                isActive('/trending') ? 'text-orange-600 active' : 'text-gray-700'
+              }`}
+            >
+              <span>🔥</span>
+              Trending
             </Link>
             
             {user ? (
               <>
                 <Link 
                   to="/ask" 
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-semibold btn-hover-lift btn-hover-glow btn-click-scale transition-all duration-300"
                 >
                   Ask Question
                 </Link>
@@ -72,7 +91,10 @@ const Header = () => {
                       className="w-8 h-8 rounded-full ring-2 ring-blue-200"
                     />
                     <div className="hidden lg:block text-left">
-                      <div className="text-sm font-semibold">{user.username}</div>
+                      <div className="flex items-center gap-2">
+                        <div className="text-sm font-semibold">{user.username}</div>
+                        <MedalSystem userId={user.id} size="small" showProgress={false} />
+                      </div>
                       <div className="text-xs text-gray-500">
                         {user.isAdmin ? 'Admin' : 'Member'}
                       </div>
@@ -83,7 +105,7 @@ const Header = () => {
                   </button>
                   
                   {isMenuOpen && (
-                    <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
+                    <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50 modal-enter">
                       <div className="px-4 py-3 border-b border-gray-100">
                         <div className="flex items-center space-x-3">
                           <img 
@@ -91,8 +113,11 @@ const Header = () => {
                             alt={user.username} 
                             className="w-10 h-10 rounded-full"
                           />
-                          <div>
-                            <p className="text-sm font-semibold text-gray-800">{user.username}</p>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2">
+                              <p className="text-sm font-semibold text-gray-800">{user.username}</p>
+                              <MedalSystem userId={user.id} size="small" showProgress={false} />
+                            </div>
                             <p className="text-xs text-gray-600">{user.email}</p>
                             {user.isAdmin && (
                               <span className="inline-block px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full mt-1">
@@ -104,6 +129,16 @@ const Header = () => {
                       </div>
                       
                       <div className="py-2">
+                        <Link
+                          to="/profile"
+                          className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          <svg className="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                          </svg>
+                          My Profile
+                        </Link>
                         <Link
                           to="/ask"
                           className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
@@ -123,6 +158,22 @@ const Header = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           Browse Questions
+                        </Link>
+                        <Link
+                          to="/search"
+                          className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          <span className="w-4 h-4 mr-3 text-center">🤖</span>
+                          AI Smart Search
+                        </Link>
+                        <Link
+                          to="/trending"
+                          className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          <span className="w-4 h-4 mr-3 text-center">🔥</span>
+                          Trending Questions
                         </Link>
                       </div>
                       
@@ -151,7 +202,7 @@ const Header = () => {
                 </Link>
                 <Link 
                   to="/register" 
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-semibold btn-hover-lift btn-hover-glow btn-click-scale transition-all duration-300"
                 >
                   Get Started
                 </Link>
@@ -192,9 +243,36 @@ const Header = () => {
               >
                 Questions
               </Link>
+              <Link 
+                to="/search" 
+                className={`font-medium transition-colors hover:text-purple-600 flex items-center gap-2 ${
+                  isActive('/search') ? 'text-purple-600' : 'text-gray-700'
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span>🤖</span>
+                AI Search
+              </Link>
+              <Link 
+                to="/trending" 
+                className={`font-medium transition-colors hover:text-orange-600 flex items-center gap-2 ${
+                  isActive('/trending') ? 'text-orange-600' : 'text-gray-700'
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span>🔥</span>
+                Trending
+              </Link>
               
               {user ? (
                 <>
+                  <Link 
+                    to="/profile" 
+                    className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    My Profile
+                  </Link>
                   <Link 
                     to="/ask" 
                     className="text-blue-600 font-semibold"
@@ -209,8 +287,11 @@ const Header = () => {
                         alt={user.username} 
                         className="w-10 h-10 rounded-full ring-2 ring-blue-200"
                       />
-                      <div>
-                        <p className="text-sm font-semibold text-gray-800">{user.username}</p>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <p className="text-sm font-semibold text-gray-800">{user.username}</p>
+                          <MedalSystem userId={user.id} size="small" showProgress={false} />
+                        </div>
                         <p className="text-xs text-gray-600">{user.email}</p>
                         {user.isAdmin && (
                           <span className="inline-block px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full mt-1">

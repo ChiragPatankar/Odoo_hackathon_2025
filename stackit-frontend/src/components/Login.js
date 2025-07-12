@@ -69,9 +69,9 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center py-12">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center py-12 page-transition">
       <div className="max-w-md w-full mx-4">
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden animate-scale-in">
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-center">
             <div className="flex justify-center mb-4">
@@ -102,8 +102,8 @@ const Login = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={`w-full pl-10 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
-                      errors.email ? 'border-red-300 bg-red-50' : 'border-gray-200 hover:border-gray-300'
+                    className={`w-full pl-10 pr-4 py-3 border rounded-xl form-input-focus focus-ring transition-all duration-200 ${
+                      errors.email ? 'border-red-300 bg-red-50 form-submit-error' : 'border-gray-200 hover:border-gray-300'
                     }`}
                     placeholder="Enter your email"
                     autoComplete="email"
@@ -133,8 +133,8 @@ const Login = () => {
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    className={`w-full pl-10 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
-                      errors.password ? 'border-red-300 bg-red-50' : 'border-gray-200 hover:border-gray-300'
+                    className={`w-full pl-10 pr-4 py-3 border rounded-xl form-input-focus focus-ring transition-all duration-200 ${
+                      errors.password ? 'border-red-300 bg-red-50 form-submit-error' : 'border-gray-200 hover:border-gray-300'
                     }`}
                     placeholder="Enter your password"
                     autoComplete="current-password"
@@ -162,7 +162,7 @@ const Login = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-4 rounded-xl font-semibold text-lg hover:shadow-lg transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none transition-all duration-300"
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-4 rounded-xl font-semibold text-lg btn-hover-lift btn-hover-glow btn-click-scale disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
               >
                 {loading ? (
                   <div className="flex items-center justify-center">
@@ -209,7 +209,7 @@ const Login = () => {
         <div className="text-center mt-6">
           <Link 
             to="/" 
-            className="text-gray-600 hover:text-blue-600 transition-colors font-medium flex items-center justify-center"
+            className="text-gray-600 hover:text-blue-600 transition-colors font-medium flex items-center justify-center btn-hover-lift"
           >
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
