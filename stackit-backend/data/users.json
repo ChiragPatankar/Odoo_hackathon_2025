@@ -34,5 +34,14 @@
     "isAdmin": false,
     "avatar": "https://via.placeholder.com/40/007bff/ffffff?text=C",
     "createdAt": "2025-07-12T05:15:59.319Z"
+  },
+  {
+    "id": "e8c7043b-23b1-487b-a416-6f04d3d42b2c",
+    "username": "admin1",
+    "email": "preksha@gmail.com",
+    "password": "Billi@1605",
+    "isAdmin": false,
+    "avatar": "https://via.placeholder.com/40/007bff/ffffff?text=A",
+    "createdAt": "2025-07-12T10:27:33.783Z"
   }
 ]
