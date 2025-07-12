@@ -1,0 +1,29 @@
+[
+  {
+    "id": "user1",
+    "username": "admin",
+    "email": "admin@stackit.com",
+    "password": "admin123",
+    "isAdmin": true,
+    "avatar": "https://via.placeholder.com/40/007bff/ffffff?text=A",
+    "createdAt": "2025-07-12T04:51:06.544Z"
+  },
+  {
+    "id": "user2",
+    "username": "johndoe",
+    "email": "john@example.com",
+    "password": "password123",
+    "isAdmin": false,
+    "avatar": "https://via.placeholder.com/40/28a745/ffffff?text=J",
+    "createdAt": "2025-07-12T04:51:06.544Z"
+  },
+  {
+    "id": "e0f52338-c91f-4536-9794-82a155475d06",
+    "username": "Chirag",
+    "email": "chirag.17042@sakec.ac.in",
+    "password": "$G@JUTna4rdSktv",
+    "isAdmin": false,
+    "avatar": "https://via.placeholder.com/40/007bff/ffffff?text=C",
+    "createdAt": "2025-07-12T04:58:10.505Z"
+  }
+]

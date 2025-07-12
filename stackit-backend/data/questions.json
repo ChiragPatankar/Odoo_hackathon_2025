@@ -1,0 +1,36 @@
+[
+  {
+    "id": "q1",
+    "title": "How to connect to SQL Server database?",
+    "description": "I need help connecting to SQL Server database using Node.js. What are the best practices?",
+    "tags": [
+      "SQL",
+      "Database",
+      "Node.js"
+    ],
+    "userId": "user2",
+    "username": "johndoe",
+    "votes": 5,
+    "answers": 2,
+    "acceptedAnswerId": null,
+    "createdAt": "2025-07-11T04:51:06.544Z",
+    "updatedAt": "2025-07-11T04:51:06.544Z"
+  },
+  {
+    "id": "q2",
+    "title": "React hooks vs class components",
+    "description": "When should I use React hooks versus class components? What are the performance implications?",
+    "tags": [
+      "React",
+      "JavaScript",
+      "Hooks"
+    ],
+    "userId": "user1",
+    "username": "admin",
+    "votes": 3,
+    "answers": 1,
+    "acceptedAnswerId": null,
+    "createdAt": "2025-07-10T04:51:06.544Z",
+    "updatedAt": "2025-07-10T04:51:06.544Z"
+  }
+]

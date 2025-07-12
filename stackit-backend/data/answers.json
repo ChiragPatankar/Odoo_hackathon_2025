@@ -1,0 +1,22 @@
+[
+  {
+    "id": "a1",
+    "questionId": "q1",
+    "content": "You can use the `mssql` package for Node.js. Here's a simple example:\n\n```javascript\nconst sql = require('mssql');\n\nconst config = {\n  user: 'your_username',\n  password: 'your_password',\n  server: 'your_server',\n  database: 'your_database'\n};\n\nsql.connect(config)\n  .then(pool => {\n    return pool.request().query('SELECT * FROM users');\n  })\n  .then(result => {\n    console.log(result);\n  });\n```\n\nMake sure to handle errors and use connection pooling for better performance.",
+    "userId": "user1",
+    "username": "admin",
+    "votes": 8,
+    "isAccepted": false,
+    "createdAt": "2025-07-11T05:51:06.545Z"
+  },
+  {
+    "id": "a2",
+    "questionId": "q1",
+    "content": "Another approach is to use TypeORM which provides better type safety:\n\n```typescript\nimport { createConnection } from 'typeorm';\n\nconst connection = await createConnection({\n  type: 'mssql',\n  host: 'localhost',\n  port: 1433,\n  username: 'your_username',\n  password: 'your_password',\n  database: 'your_database',\n  entities: [User, Question]\n});\n```",
+    "userId": "user2",
+    "username": "johndoe",
+    "votes": 3,
+    "isAccepted": false,
+    "createdAt": "2025-07-11T06:51:06.545Z"
+  }
+]
