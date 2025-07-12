@@ -2,7 +2,7 @@
 
 # 📚 StackIt – Minimal Q&A Platform
 
-> **Problem Statement 1**: StackIt – A Minimal Q&A Forum Platform  
+> **Problem Statement 2**: StackIt – A Minimal Q&A Forum Platform  
 > **Team Name**: Hackoholics
 > **Team Members' Emails**:
 > - chirag.17042@sakec.ac.in
