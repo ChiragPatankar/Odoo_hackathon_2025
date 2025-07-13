@@ -1,5 +1,7 @@
 # Odoo_hackathon_2025
+
 # 📚 StackIt – Minimal Q&A Platform
+
 > **Problem Statement 2**: StackIt – A Minimal Q&A Forum Platform  
 > **Team Name**: Hackoholics
 > **Team Members' Emails**:
@@ -7,210 +9,200 @@
 > - preksha.dewoolkar17567@sakec.ac.in
 > - samruddhi.17153@sakec.ac.in
 
-🚀 **Odoo Hackathon 2025**  
-**Odoo Collaborator:** [@mjvi-odoo](https://github.com/mjvi-odoo)
+---
+
+## 🌟 Project Overview
+
+StackIt is a comprehensive Q&A platform with advanced AI-powered features, built to foster knowledge sharing and community engagement. The platform combines traditional Q&A functionality with modern AI capabilities to provide an intelligent, user-friendly experience.
 
 ---
 
-## 📋 Overview
+## 🚀 Key Features
 
-StackIt is a modern, minimal Q&A forum platform designed to facilitate knowledge sharing and community engagement. Built with smart NLP-powered features, it provides an intuitive interface for users to ask questions, share answers, and discover relevant content through intelligent tagging.
+### 📝 Core Q&A Functionality
+- **Question Management**: Create detailed questions with rich text, tags, and categorization
+- **Answer System**: Comprehensive answer interface with voting and acceptance features
+- **Smart Search**: AI-powered search with content analysis and relevance scoring
+- **Trending Questions**: Dynamic trending algorithm based on engagement metrics
 
----
+### 🤖 AI-Powered Features
+- **Smart Tag Suggestions**: Automatic tag generation using NLP analysis
+- **Content Quality Analysis**: Real-time writing assistance and quality scoring
+- **Duplicate Detection**: Intelligent duplicate question identification
+- **Personalized Recommendations**: Content suggestions based on user behavior
+- **Content Moderation**: Automated toxicity and spam detection
+- **Answer Summarization**: AI-generated summaries for long answers
+- **Sentiment Analysis**: Content sentiment evaluation
 
-## ✨ Features
+### 🏆 Gamification & Engagement
+- **Medal System**: Progressive achievement system with reputation points
+  - 🌱 Beginner (0-100 points): Green badge
+  - 🔥 Intermediate (101-500 points): Yellow badge  
+  - 💎 Advanced (501-1000 points): Red badge
+- **Voting System**: Upvote/downvote functionality for answers
+- **User Profiles**: Comprehensive user statistics and achievement tracking
+- **Notification System**: Real-time notifications for interactions and mentions
 
-### Core Functionality
-- 📝 **Ask Questions** - Create questions with rich titles, detailed descriptions, and relevant tags
-- 💬 **Answer Questions** - Respond to questions using a rich text editor with formatting options
-- 👍 **Voting System** - Upvote or downvote answers to highlight quality content
-- 🏷️ **Smart Tag Suggestions** - NLP-powered auto-tagging using KeyBERT for relevant content discovery
-- 🔔 **Notification System** - Real-time notifications for answers and mentions
-- 🛡️ **Admin Dashboard** - Comprehensive content moderation and management tools
-- 🔒 **Authentication & Authorization** - Secure user authentication with role-based access (User/Admin)
-
-### Smart Features
-- 🔍 **Intelligent Tagging** - Uses NLP (KeyBERT) to automatically suggest relevant tags from question content
-- 🎯 **Content Discovery** - Enhanced search and filtering capabilities through smart categorization
-
----
-
-## 🔮 Planned Enhancements
-
-- **Answer Quality Scoring** - Algorithm to rank answers based on quality metrics
-- **Toxicity/Spam Detection** - NLP-powered content moderation for safer community interaction
-- **Related Question Suggestions** - AI-driven recommendations for similar questions
-- **Advanced Search** - Semantic search capabilities for better content discovery
-
----
-
-## 🛠️ Technology Stack
-
-| Layer | Technology |
-|-------|-----------|
-| **Frontend** | HTML, Tailwind CSS (or React) |
-| **Backend** | Python (Flask) or Odoo Framework |
-| **Database** | SQLite / PostgreSQL |
-| **AI/NLP** | Python (KeyBERT, Transformers) |
-| **Hosting** | Vercel / Render / GitHub Pages |
+### 🔧 Advanced Features
+- **Writing Assistant**: Real-time suggestions for content improvement
+- **Topic Analysis**: Automated topic extraction and clustering
+- **Engagement Analytics**: Detailed engagement patterns and insights
+- **Content Flagging**: Intelligent content moderation system
 
 ---
 
-## 🚀 Getting Started
+## 🛠️ Tech Stack
 
-### Prerequisites
-- Python 3.8 or higher
-- pip (Python package manager)
-- Node.js (if using React frontend)
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/ChiragPatankar/Odoo_hackathon_2025.git
-   cd Odoo_hackathon_2025
-   ```
-
-2. **Set up virtual environment**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Set up environment variables**
-   ```bash
-   cp .env.example .env
-   # Edit .env with your configuration
-   ```
-
-5. **Initialize the database**
-   ```bash
-   python manage.py migrate
-   ```
-
-6. **Run the application**
-   ```bash
-   python app.py
-   ```
-
-The application will be available at `http://localhost:5000`
+| Component | Technology |
+|-----------|------------|
+| **Frontend** | React 19, React Router, Tailwind CSS |
+| **Backend** | Node.js, Express.js |
+| **AI/NLP** | Natural, Compromise, String-similarity, Stopword |
+| **Data Storage** | JSON-based file system |
+| **HTTP Client** | Axios |
+| **Development** | Nodemon, React Scripts |
 
 ---
 
 ## 📁 Project Structure
 
 ```
-stackit/
-├── app.py                 # Main application file
-├── models/               # Database models
-├── views/                # Route handlers
-├── templates/            # HTML templates
-├── static/              # CSS, JS, images
-├── nlp/                 # NLP utilities and models
-├── migrations/          # Database migrations
-├── tests/              # Test files
-├── requirements.txt    # Python dependencies
-└── README.md          # This file
+Odoo_hackathon_2025/
+├── stackit-frontend/          # React frontend application
+│   ├── src/
+│   │   ├── components/        # React components
+│   │   │   ├── AskQuestion.js
+│   │   │   ├── SmartSearch.js
+│   │   │   ├── MedalSystem.js
+│   │   │   ├── UserProfile.js
+│   │   │   ├── RecommendationsDashboard.js
+│   │   │   └── ...
+│   │   ├── App.js
+│   │   └── index.js
+│   ├── public/
+│   └── package.json
+├── stackit-backend/           # Node.js backend API
+│   ├── services/
+│   │   └── aiService.js       # AI/NLP service layer
+│   ├── data/                  # JSON data storage
+│   │   ├── questions.json
+│   │   ├── answers.json
+│   │   ├── users.json
+│   │   └── ...
+│   ├── server.js
+│   └── package.json
+└── README.md
 ```
 
 ---
 
-## 🎯 Usage
+## 🚀 Getting Started
 
-### For Users
-1. **Sign up** or **log in** to your account
-2. **Browse questions** on the homepage
-3. **Ask a question** by clicking the "Ask Question" button
-4. **Answer questions** by clicking on any question and providing your response
-5. **Vote** on answers to help the community identify quality content
-6. **Get notified** when your questions receive answers or you're mentioned
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn package manager
 
-### For Administrators
-1. Access the **admin dashboard** at `/admin`
-2. **Moderate content** by reviewing flagged posts
-3. **Manage users** and assign roles
-4. **Monitor platform** activity and engagement
+### Installation & Setup
 
----
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd Odoo_hackathon_2025
+   ```
 
-## 🤖 NLP Features
+2. **Install backend dependencies**
+   ```bash
+   cd stackit-backend
+   npm install
+   ```
 
-### Smart Tagging with KeyBERT
-- Automatically extracts relevant keywords from question content
-- Suggests contextually appropriate tags
-- Improves content discoverability and organization
+3. **Install frontend dependencies**
+   ```bash
+   cd ../stackit-frontend
+   npm install
+   ```
 
-### Implementation
-```python
-from keybert import KeyBERT
+4. **Start the development servers**
+   
+   **Backend** (Terminal 1):
+   ```bash
+   cd stackit-backend
+   npm run dev
+   ```
+   
+   **Frontend** (Terminal 2):
+   ```bash
+   cd stackit-frontend
+   npm start
+   ```
 
-kw_model = KeyBERT()
-keywords = kw_model.extract_keywords(question_text, keyphrase_ngram_range=(1, 2))
-```
-
----
-
-## 🧪 Testing
-
-Run the test suite:
-```bash
-python -m pytest tests/
-```
-
-Run with coverage:
-```bash
-python -m pytest tests/ --cov=app
-```
+5. **Access the application**
+   - Frontend: `http://localhost:3000`
+   - Backend API: `http://localhost:3001`
 
 ---
 
-## 🚀 Deployment
+## 🤖 AI Service Capabilities
 
-### Using Vercel
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run: `vercel`
-3. Follow the prompts
+The AI service (`aiService.js`) provides comprehensive NLP capabilities:
 
-### Using Render
-1. Connect your GitHub repository
-2. Set build command: `pip install -r requirements.txt`
-3. Set start command: `python app.py`
+- **Content Analysis**: Quality scoring, complexity assessment, sentiment analysis
+- **Smart Matching**: Question similarity detection, duplicate identification
+- **Recommendation Engine**: Personalized content suggestions
+- **Text Processing**: Keyword extraction, topic modeling, summarization
+- **Moderation**: Toxicity detection, spam filtering, content flagging
+- **Engagement Analytics**: User behavior analysis, engagement patterns
 
 ---
 
-## 🤝 Contributing
+## 📊 Features in Detail
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### Medal System
+- **Dynamic Reputation**: Points awarded for questions, answers, and community engagement
+- **Progressive Badges**: Visual recognition system with three tiers
+- **Achievement Tracking**: Detailed statistics and milestone tracking
+
+### Smart Search
+- **Content-Based Matching**: Semantic search using NLP
+- **Tag Intelligence**: Auto-suggestion based on content analysis
+- **Relevance Scoring**: Advanced ranking algorithms
+
+### User Experience
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Real-time Updates**: Dynamic content updates without page refresh
+- **Intuitive Navigation**: User-friendly interface design
+
+---
+
+## 🎯 Future Enhancements
+
+- [ ] Database migration (SQLite/PostgreSQL)
+- [ ] Enhanced AI models for better accuracy
+- [ ] Real-time collaboration features
+- [ ] Mobile application development
+- [ ] Advanced analytics dashboard
+- [ ] Multi-language support
+
+---
+
+## 👥 Contributors
+
+**Team Hackoholics**
+- **Chirag** - chirag.17042@sakec.ac.in
+- **Preksha Dewoolkar** - preksha.dewoolkar17567@sakec.ac.in  
+- **Samruddhi** - samruddhi.17153@sakec.ac.in
+
+**Odoo Collaborator**
+- **GitHub**: [mjvi-odoo](https://github.com/mjvi-odoo)
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is developed for the Odoo Hackathon 2025.
 
 ---
 
-## 🙏 Acknowledgments
-
-- Odoo Hackathon 2025 organizers
-- KeyBERT for NLP capabilities
-- Open source community for inspiration and tools
-
----
-
-## 📞 Support
-
-For support, please open an issue on GitHub or contact the team members.
-
----
-
-**Built with ❤️ for Odoo Hackathon 2025**
+<div align="center">
+  <strong>Built with ❤️ by Team Hackoholics</strong>
+</div>
